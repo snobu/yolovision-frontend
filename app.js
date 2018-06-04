@@ -70,13 +70,13 @@ new Vue({
     fileUpload: function fileUpload(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
-      console.log(files[0]);
       this.image = files[0];
       this.createImage();
       this.detect();
     },
     useMine: function useMine() {
       this.image = "/elephant.jpg";
+      this.createImage();
       this.detect();
     },
     createImage: function createImage() {
