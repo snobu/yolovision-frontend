@@ -55,12 +55,11 @@ new Vue({
         }
       }).then(function (response) {
         if (response.status == 200 | response.status == 201 | response.status == 202) {
-          window.location = 'https://i.imgur.com/7kIvac3.gif';
+          if (response.headers.location) {
+            window.location = response.headers.location;
+            console.log('New window.location = ', response.headers.location);
+          }
         }
-        // if (response.headers.location) {
-        //   window.location = response.headers.location;
-        //   console.log('New window.location = ', response.headers.location);
-        // }
         else {
           console.error('Something has gone awfully bad.');
           console.log('response.headers.location = ', response.headers.location);
