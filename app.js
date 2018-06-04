@@ -1,6 +1,5 @@
 let PacmanLoader = VueSpinner.PacmanLoader;
-//let postUrl = 'http://mockbin.org/bin/4b69cdc8-a4dd-4540-b1a7-c7dbfcf157ff';
-let postUrl = 'http://10.45.3.4';
+let postUrl = '/images';
 
 Vue.component("child", {
   props: {
