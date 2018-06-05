@@ -46,7 +46,7 @@ new Vue({
       }
       
       axios({
-        method: "get",
+        method: "post",
         url: postUrl,
         data: data,
         timeout: 14000,
