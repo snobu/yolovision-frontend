@@ -19,8 +19,7 @@
       <img :src="image" />
     </div>
 
-    <!-- <section v-if="image && !noResponse"> -->
-      <section>
+    <section v-if="image && !noResponse">
       <div v-if="Object.keys(this.thing).length !== 0">
         <h3 class="nomobile">Results are in.</h3>
       </div>
