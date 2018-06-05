@@ -46,7 +46,7 @@ new Vue({
       }
       
       axios({
-        method: "post",
+        method: "get",
         url: postUrl,
         data: data,
         timeout: 14000,
@@ -55,10 +55,7 @@ new Vue({
         }
       }).then(function (response) {
         if (response.status == 200 | response.status == 201 | response.status == 202) {
-          if (response.headers.location) {
-            window.location = response.headers.location;
-            console.log('New window.location = ', response.headers.location);
-          }
+          _this.thing = { img: response.headers.location };
         }
         else {
           console.error('Something has gone awfully bad.');
@@ -67,6 +64,7 @@ new Vue({
         }
       });
     },
+    
     fileUpload: function fileUpload(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
@@ -74,11 +72,12 @@ new Vue({
       this.createImage();
       this.detect();
     },
+    
     useMine: function useMine() {
       this.image = "/elephant.jpg";
-      this.createImage();
       this.detect();
     },
+
     createImage: function createImage() {
       var _this2 = this;
 

@@ -19,7 +19,8 @@
       <img :src="image" />
     </div>
 
-    <section v-if="image && !noResponse">
+    <!-- <section v-if="image && !noResponse"> -->
+      <section>
       <div v-if="Object.keys(this.thing).length !== 0">
         <h3 class="nomobile">Results are in.</h3>
       </div>
@@ -33,6 +34,12 @@
       </div>
     </section>
 
+    <ul>
+        <li v-for="t in thing">
+          <img src="{{ t }}" />
+        </li>
+    </ul>
+
     <section v-if="noResponse">
       <p>No response!</p>
       <button @click="removeImage">Try again!</button>
@@ -42,9 +49,12 @@
 
 </div>
 
-<script type="text/x-template" id="child">
+<!-- <script type="text/x-template" id="child">
+  <div v-if="Object.keys(this.thing).length !== 0">
+      <h1>sadas: {{ thing }}<h1>
+    </div>
   <div ref="canvas"></div>
-</script>
+</script> -->
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.15.3/axios.min.js'></script>
 <script src='https://cdn.jsdelivr.net/npm/vue-spinner@1.0.3/dist/vue-spinner.min.js'></script>
