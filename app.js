@@ -26,6 +26,7 @@ new Vue({
     return {
       spinnerColor: '#fff',
       thing: {},
+      predictions: {},
       image: "",
       noResponse: false
     };
@@ -42,7 +43,8 @@ new Vue({
         contentType = "application/json";
       } else {
         data = this.image;
-        contentType = "application/octet-stream";
+        console.log(`POSTing as ${this.type}`);
+        contentType = this.type;
       }
       
       axios({
@@ -56,6 +58,7 @@ new Vue({
       }).then(function (response) {
         if (response.status == 200 | response.status == 201 | response.status == 202) {
           _this.thing = { img: response.headers.location };
+          _this.predictions = response.data;
         }
         else {
           console.error('Something has gone awfully bad.');
@@ -69,6 +72,8 @@ new Vue({
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length) return;
       this.image = files[0];
+      this.type = files[0].type;
+      console.log(`MIME type: ${this.type}`);
       this.createImage();
       this.detect();
     },
@@ -94,6 +99,7 @@ new Vue({
       this.image = "";
       this.noResponse = false;
       this.thing = {};
+      this.predictions = {};
     }
   }
 });

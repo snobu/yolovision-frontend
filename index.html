@@ -22,6 +22,7 @@
     <section v-if="image && !noResponse">
       <div v-if="Object.keys(this.thing).length !== 0">
         <h3 class="nomobile">Results are in.</h3>
+        <pre v-for="(value, key) in predictions">{{ key }}: {{ value }}</pre>
       </div>
       <div v-else>
         <div id="loading">
@@ -32,19 +33,20 @@
         </div>
       </div>
     </section>
-
-    <ul>
-        <li v-for="t in thing">
-          <img v-bind:src="t" />
-        </li>
-    </ul>
-
+    
     <section v-if="noResponse">
       <p>No response!</p>
       <button @click="removeImage">Try again!</button>
     </section>
 
-  </aside>
+ </aside>
+
+ <!-- render detection result -->
+ <main>
+   <div id="canvas" v-for="t in thing">
+     <img v-bind:src="t" style="width: 500px" />
+   </div>
+ </main>
 
 </div>
 

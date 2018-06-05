@@ -8,6 +8,10 @@ body {
   font-family: 'Segoe UI', 'Lato', helvetica, sans-serif;
 }
 
+pre {
+  font-family: Consolas, Monaco, Courier, monospace
+}
+
 button {
   background: #AB081E;
   color: white;
@@ -54,8 +58,8 @@ a {
   height: 100%;
   max-width: 1000px;
   max-height: 700px;
-  margin-left: 30px;
-  margin-top: 0;
+  margin-left: 90px;
+  margin-top: 90px;
 }
 
 #app {
